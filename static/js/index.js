@@ -10,6 +10,7 @@ $(() => {
                         dataSource: data.chatters, // 設定資料來源
                         allowColumnReordering: true, // 允許重新排序欄位
                         width: "100%", // 設定寬度為 100%
+                        height: "100%",
                         showBorders: true, // 顯示邊框
                         hoverStateEnabled: true, // 啟用懸停狀態
                         grouping: {
@@ -20,7 +21,7 @@ $(() => {
                             visible: true, // 顯示搜尋面板
                         },
                         paging: {
-                            pageSize: 25, // 每頁顯示 25 筆資料
+                            enabled: false,
                         },
                         groupPanel: {
                             visible: true, // 顯示分組面板
