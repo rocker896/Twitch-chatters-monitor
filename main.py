@@ -42,7 +42,7 @@ def index(channel=CHANNEL_LOGIN):
     )
 
 
-@app.route("/api/data/<channel>")
+@app.route("/api/chatters/<channel>")
 def get_channel_chatters(channel):
     url = "https://gql.twitch.tv/gql"  # Twitch GraphQL API URL
     headers = {

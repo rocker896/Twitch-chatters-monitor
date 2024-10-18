@@ -1,7 +1,7 @@
 $(() => {
     function fetchData() {
         // 發送請求以獲取頻道的聊天者資料
-        fetch(`/api/data/${channel}`)
+        fetch(`/api/chatters/${channel}`)
             .then((response) => response.json())
             .then((data) => {
                 // 初始化資料表格
