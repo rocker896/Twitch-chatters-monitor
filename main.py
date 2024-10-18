@@ -23,6 +23,25 @@ app = Flask(__name__)  # 初始化 Flask 應用
 CORS(app)  # 啟用跨來源資源共享
 
 
+@app.route("/")
+@app.route("/<channel>")
+def index(channel=CHANNEL_LOGIN):
+    title = f"Twitch Chatters Monitor - {channel}"  # 設定頁面標題
+    role_config = {
+        key: {
+            "displayText": value,  # 角色顯示文字
+            "imagePath": url_for(
+                "static", filename=f"images/{key}.png"
+            ),  # 角色圖片路徑
+        }
+        for key, value in ROLES.items()  # 遍歷角色設定
+    }
+
+    return render_template(
+        "index.html", title=title, role_config=role_config, channel=channel  # 渲染模板
+    )
+
+
 @app.route("/api/data/<channel>")
 def get_channel_chatters(channel):
     url = "https://gql.twitch.tv/gql"  # Twitch GraphQL API URL
@@ -57,25 +76,6 @@ def get_channel_chatters(channel):
             chatters.append(chatter)  # 將聊天者資訊加入列表
 
     return chatters  # 回傳聊天者資訊
-
-
-@app.route("/")
-@app.route("/<channel>")
-def index(channel=CHANNEL_LOGIN):
-    title = f"Twitch Chatters Monitor - {channel}"  # 設定頁面標題
-    role_config = {
-        key: {
-            "displayText": value,  # 角色顯示文字
-            "imagePath": url_for(
-                "static", filename=f"images/{key}.png"
-            ),  # 角色圖片路徑
-        }
-        for key, value in ROLES.items()  # 遍歷角色設定
-    }
-
-    return render_template(
-        "index.html", title=title, role_config=role_config, channel=channel  # 渲染模板
-    )
 
 
 if __name__ == "__main__":
