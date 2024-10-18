@@ -1,0 +1,32 @@
+<head>
+    <title>{{ title }}</title>
+
+    <!-- DevExtreme theme -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/dx.darkviolet.css') }}"
+    />
+
+    <!-- jQuery -->
+    <script
+        type="text/javascript"
+        src="{{ url_for('static', filename='js/jquery.min.js') }}"
+    ></script>
+
+    <!-- DevExtreme library -->
+    <script
+        type="text/javascript"
+        src="{{ url_for('static', filename='js/dx.all.js') }}"
+    ></script>
+
+    <script>
+        const roleConfig = {{ role_config|tojson }};
+        const channel = "{{ channel }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</head>
+<body class="dx-viewport">
+    <div class="demo-container">
+        <div id="gridContainer"></div>
+    </div>
+</body>
