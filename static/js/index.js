@@ -57,6 +57,22 @@ $(() => {
                                 { column: "role", summaryType: "count" },
                             ],
                         },
+                        toolbar: {
+                            items: [
+                                "groupPanel",
+                                "searchPanel",
+                                {
+                                    location: "after",
+                                    widget: "dxButton",
+                                    options: {
+                                        icon: "refresh",
+                                        onClick() {
+                                            fetchData();
+                                        },
+                                    },
+                                },
+                            ],
+                        },
                     })
                     .dxDataGrid("instance"); // 獲取 DataGrid 實例
             })
