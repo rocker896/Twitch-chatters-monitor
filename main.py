@@ -63,8 +63,8 @@ def get_channel_chatters(channel):
 
     response = r.post(url, headers=headers, json=json)  # 發送 POST 請求
     data = response.json()["data"]["channel"]["chatters"]  # 解析回應中的聊天者資料
-    chatters = []  # 儲存聊天者資訊的列表
 
+    chatters = []  # 儲存聊天者資訊的列表
     for role in ROLES.keys():  # 遍歷角色
         role_name = f"{role}s" if role != "staff" else role  # 確定角色名稱
         objects = data[role_name]  # 取得該角色的聊天者
@@ -75,7 +75,13 @@ def get_channel_chatters(channel):
             chatter["role"] = role  # 設定聊天者角色
             chatters.append(chatter)  # 將聊天者資訊加入列表
 
-    return chatters  # 回傳聊天者資訊
+    count = data["count"]
+    chatters_info = {
+        "chatters": chatters,
+        "count": count,
+    }
+
+    return chatters_info  # 回傳聊天者資訊
 
 
 if __name__ == "__main__":

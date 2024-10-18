@@ -7,7 +7,7 @@ $(() => {
                 // 初始化資料表格
                 $("#gridContainer")
                     .dxDataGrid({
-                        dataSource: data, // 設定資料來源
+                        dataSource: data.chatters, // 設定資料來源
                         allowColumnReordering: true, // 允許重新排序欄位
                         width: "100%", // 設定寬度為 100%
                         showBorders: true, // 顯示邊框
@@ -56,6 +56,17 @@ $(() => {
                             groupItems: [
                                 { column: "role", summaryType: "count" }, // 計算每個角色的數量
                             ],
+                            totalItems: [
+                                {
+                                    name: "ChattersCount",
+                                    showInColumn: "name",
+                                    displayFormat: "聊天室人數: {0}",
+                                    summaryType: "custom",
+                                },
+                            ],
+                            calculateCustomSummary(options) {
+                                options.totalValue = data.count;
+                            },
                         },
                         toolbar: {
                             items: [
