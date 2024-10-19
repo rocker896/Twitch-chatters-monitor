@@ -85,4 +85,4 @@ def get_channel_chatters(channel):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)  # 啟動應用，開啟除錯模式
+    app.run(host="0.0.0.0", port=8080, debug=True)  # 啟動應用，開啟除錯模式
