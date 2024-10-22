@@ -28,13 +28,13 @@ CORS(app)  # 啟用跨來源資源共享
 def index(channel=CHANNEL_LOGIN):
     title = f"Twitch Chatters Monitor - {channel}"  # 設定頁面標題
     role_config = {
-        key: {
-            "displayText": value,  # 角色顯示文字
+        role_en: {
+            "displayText": role_zh,  # 角色顯示文字
             "imagePath": url_for(
-                "static", filename=f"images/{key}.png"
+                "static", filename=f"images/{role_en}.png"
             ),  # 角色圖片路徑
         }
-        for key, value in ROLES.items()  # 遍歷角色設定
+        for role_en, role_zh in ROLES.items()  # 遍歷角色設定
     }
 
     return render_template(
@@ -70,9 +70,10 @@ def get_channel_chatters(channel):
         objects = data[role_name]  # 取得該角色的聊天者
 
         for object in objects:  # 遍歷聊天者
-            chatter = {}
-            chatter["name"] = object["login"]  # 取得聊天者名稱
-            chatter["role"] = role  # 設定聊天者角色
+            chatter = {
+                "role": role,  # 設定聊天者角色
+                "name": object["login"],  # 取得聊天者名稱
+            }
             chatters.append(chatter)  # 將聊天者資訊加入列表
 
     count = data["count"]
