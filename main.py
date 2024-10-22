@@ -76,10 +76,10 @@ def get_channel_chatters(channel):
             }
             chatters.append(chatter)  # 將聊天者資訊加入列表
 
-    count = data["count"]
+    count = data["count"]  # 取得聊天者數量
     chatters_info = {
-        "chatters": chatters,
-        "count": count,
+        "chatters": chatters,  # 儲存聊天者資訊
+        "count": count,  # 儲存聊天者數量
     }
 
     return chatters_info  # 回傳聊天者資訊
