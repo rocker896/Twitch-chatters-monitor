@@ -2,14 +2,6 @@ $(async () => {
     // 定義更新間隔選項
     const fetchIntervalItems = [
         {
-            text: "5秒",
-            value: 5,
-        },
-        {
-            text: "10秒",
-            value: 10,
-        },
-        {
             text: "15秒",
             value: 15,
         },
