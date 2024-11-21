@@ -210,8 +210,6 @@ $(async () => {
         })
         .dxDataGrid("instance"); // 獲取資料網格實例
 
-    // 設定初始獲取間隔為第一個選項的值（毫秒）
-    let fetchInterval = fetchIntervalItems[0].value * 1000;
-    // 設定定時器，定期更新資料網格
-    let fetchIntervalId = setInterval(updateDataGrid, fetchInterval);
+    // 初始化獲取間隔及計時器變數
+    let fetchInterval, fetchIntervalId;
 });
