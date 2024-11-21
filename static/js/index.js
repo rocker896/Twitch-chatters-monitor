@@ -157,7 +157,7 @@ $(async () => {
                         location: "before",
                         widget: "dxSwitch", // 使用 DevExtreme 開關
                         options: {
-                            value: true,
+                            value: false,
                             onValueChanged(data) {
                                 $("#fetchInterval").dxSelectBox(
                                     "option",
