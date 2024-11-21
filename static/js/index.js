@@ -1,20 +1,4 @@
 $(async () => {
-    // 定義更新間隔選項
-    const fetchIntervalItems = [
-        {
-            text: "15秒",
-            value: 15,
-        },
-        {
-            text: "30秒",
-            value: 30,
-        },
-        {
-            text: "1分",
-            value: 60,
-        },
-    ];
-
     function setCellTemplate(element, options) {
         // 設定單元格模板，顯示角色名稱和圖片
         const displayText = roleConfig[options.value].displayText; // 取得顯示文字
@@ -93,6 +77,25 @@ $(async () => {
 
         updateDataGrid(); // 立即更新資料網格
     }
+
+    // 初始化獲取間隔及計時器變數
+    let fetchInterval, fetchIntervalId;
+
+    // 定義更新間隔選項
+    const fetchIntervalItems = [
+        {
+            text: "15秒",
+            value: 15,
+        },
+        {
+            text: "30秒",
+            value: 30,
+        },
+        {
+            text: "1分",
+            value: 60,
+        },
+    ];
 
     // 獲取初始資料來源
     const dataSource = await fetchDataSource();
@@ -209,7 +212,4 @@ $(async () => {
             },
         })
         .dxDataGrid("instance"); // 獲取資料網格實例
-
-    // 初始化獲取間隔及計時器變數
-    let fetchInterval, fetchIntervalId;
 });
